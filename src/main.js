@@ -9,11 +9,12 @@ import "./lib/mui/css/mui.min.css"
 import "./lib/mui/css/icons-extra.css"
 
 //按需导入组件
-import { Header, Swipe, SwipeItem } from 'mint-ui'
+import { Header, Swipe, SwipeItem,Button } from 'mint-ui'
 //注册组件
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
+Vue.component(Button.name, Button)
 
 //引入router
 import router from './router/'
@@ -22,9 +23,18 @@ import router from './router/'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
+// 配置vue-resource的请求根域名
+Vue.http.options.root = 'http://www.lovegf.cn:8899/'
+
 //引入公共样式
 import './css/common.css'
+import { isMoment } from 'moment';
 
+//定义全局时间过滤器
+import moment from 'moment'
+Vue.filter('dateFormat',function(data){
+  return moment(data).format('YYYY-MM-DD HH:mm:ss')
+})
 
 
 
