@@ -9,12 +9,13 @@ import "./lib/mui/css/mui.min.css"
 import "./lib/mui/css/icons-extra.css"
 
 //按需导入组件
-import { Header, Swipe, SwipeItem,Button } from 'mint-ui'
+import { Header, Swipe, SwipeItem,Button ,Lazyload} from 'mint-ui'
 //注册组件
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 Vue.component(Button.name, Button)
+Vue.use(Lazyload);
 
 //引入router
 import router from './router/'

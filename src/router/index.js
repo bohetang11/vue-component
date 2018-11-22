@@ -9,6 +9,7 @@ import shopcarComponent from '../pages/shopcar/'
 import searchComponent from '../pages/search/'
 import newListComponent from '../pages/newList/'
 import newInfoComponent from '../pages/newInfo/'
+import photoShareComponent from '../pages/photoshare/'
 
 export default new Router({
   routes: [
@@ -20,7 +21,8 @@ export default new Router({
     {path:'/shopcar',component: shopcarComponent},
     {path:'/search',component: searchComponent},
     {path:'/home/newList',component: newListComponent},
-    {path:'/home/newList/newInfo/:id',component: newInfoComponent}
+    {path:'/home/newList/newInfo/:id',component: newInfoComponent},
+    {path:'/home/newList/photoshare',component: photoShareComponent}
   ],
   linkActiveClass: 'mui-active'
 })
