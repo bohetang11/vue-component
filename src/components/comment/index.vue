@@ -1,8 +1,8 @@
 <template>
     <div class="newlist-comment">
         <h3>发表评论</h3><hr>
-        <textarea placeholder="请输入要BB的内容(最多吐槽120字)"></textarea>
-        <mt-button type="primary" size="large">发表评论</mt-button>
+        <textarea v-model='msg' placeholder="请输入要BB的内容(最多吐槽120字)"></textarea>
+        <mt-button type="primary" size="large" @click='postComment'>发表评论</mt-button>
         <div class="comment-list">
             <div v-for="(item, index) in commentList" :key="index" class="comment-item">
                 <div class="comment-title">
@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <mt-button type="danger" size="large" plain>加载更多</mt-button>
+        <mt-button type="danger" size="large" @click='getmore' plain>加载更多</mt-button>
     </div>
 </template>
 <script>
@@ -23,7 +23,8 @@
         data(){
             return {
                 pageindex:1,
-                commentList:[]
+                commentList:[],
+                msg:''
             }
         },
         props:['id'],
@@ -33,11 +34,33 @@
         methods:{
             getComments(){
                 this.$http.get('api/getcomments/'+this.id+'?pageindex='+this.pageindex).then(res=>{
-                    console.log(res)
+                    // console.log(res)
                     if(res.body.status===0){
-                        this.commentList=res.body.message
+                        this.commentList=this.commentList.concat(res.body.message)
                     }else{
                         Toast('获取评论失败!')
+                    }
+                })
+            },
+            getmore(){
+                this.pageindex++;
+                this.getComments()
+            },
+            postComment(){
+                if(this.msg.trim().length===0){
+                    return Toast('评论内容不能为空!')
+                }
+                this.$http.post('api/postcomment/'+this.id).then(res=>{
+                    if(res.body.status===0){
+                        var cmt={
+                            user_name: '匿名用户',
+                            add_time: Date.now(),
+                            content: this.msg.trim()
+                        }
+                        this.commentList.unshift(cmt)
+                        this.msg=''
+                    }else{
+                        Toast('发表评论失败!请重试!')
                     }
                 })
             }

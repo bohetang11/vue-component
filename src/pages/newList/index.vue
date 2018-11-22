@@ -18,46 +18,46 @@
 </template>
 
 <script>
-    //引入消息提示框
-    import { Toast } from "mint-ui";
-    export default {
-        data(){
-            return {
-                newlist:[]
-            }
-        },
-        created(){
-            this.getNewList()
-        },
-        methods:{
-            getNewList(){
-                this.$http.get('api/getnewslist').then(res=>{
-                    if(res.body.status===0){
-                        // console.log(res)
-                        this.newlist=res.body.message
-                    }else{
-                        Toast("新闻列表获取失败!请重试!")
-                    }
-                })
-            }
+//引入消息提示框
+import { Toast } from "mint-ui";
+export default {
+  data() {
+    return {
+      newlist: []
+    };
+  },
+  created() {
+    this.getNewList();
+  },
+  methods: {
+    getNewList() {
+      this.$http.get("api/getnewslist").then(res => {
+        if (res.body.status === 0) {
+          // console.log(res)
+          this.newlist = res.body.message;
+        } else {
+          Toast("新闻列表获取失败!请重试!");
         }
+      });
     }
+  }
+};
 </script>
 
 <style lang="less">
-    .newlist-component{
-        .mui-table-view-cell{
-            a{
-                .mui-media-body{
-                    h4{
-                        font-weight: 700;
-                    }
-                    p{
-                        color: #26a2ff;
-                        line-height: 30px;
-                    }
-                }
-            }
+.newlist-component {
+  .mui-table-view-cell {
+    a {
+      .mui-media-body {
+        h4 {
+          font-weight: 700;
         }
+        p {
+          color: #26a2ff;
+          line-height: 30px;
+        }
+      }
     }
+  }
+}
 </style>
