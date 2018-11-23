@@ -12,13 +12,13 @@
         </div>
         <!-- 图片区域 -->
         <ul class="photo-list">
-            <li v-for="item in photoList" :key="item.id">
+            <router-link v-for="item in photoList" :key="item.id" tag='li' :to="'/home/newList/photoshare/photoinfo/'+item.id">
                 <img v-lazy="item.img_url">
                 <div class="info">
                     <h2 class="info-title">{{item.title}}</h2>
                     <div class="info-body">{{item.zhaiyao}}</div>
                 </div>
-            </li>
+            </router-link>
         </ul>
     </div>
 </template>
@@ -30,7 +30,14 @@ export default {
   data() {
     return {
       photoTitleList: [],
-      photoList: []
+      photoList: [
+        // {
+        //   id:37,
+        //   img_url:'https://goss1.veer.com/creative/vcg/veer/612/veer-300448332.jpg',
+        //   title: '现代简约 明亮的外表卧室卧室背景墙、吊顶黄色',
+        //   zhaiyao: "不要简朴不要素雅洋气卧室我做主，高低床榻榻米式靓丽卧室装扮，现代油画壁画帆布画卧室餐厅仟象映画，现代中式卧室装修图欣赏，温馨浪漫，而且很时尚的卧室设计，欧式卧室飘窗装修效果图。"
+        // }
+      ]
     };
   },
   created() {

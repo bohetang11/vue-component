@@ -16,6 +16,9 @@ Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 Vue.component(Button.name, Button)
 Vue.use(Lazyload);
+//导入缩略图插件
+import VuePreview from 'vue2-preview'
+Vue.use(VuePreview)
 
 //引入router
 import router from './router/'

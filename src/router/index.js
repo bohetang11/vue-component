@@ -10,6 +10,7 @@ import searchComponent from '../pages/search/'
 import newListComponent from '../pages/newList/'
 import newInfoComponent from '../pages/newInfo/'
 import photoShareComponent from '../pages/photoshare/'
+import photoInfoComponent from '../pages/photoInfo/'
 
 export default new Router({
   routes: [
@@ -22,7 +23,8 @@ export default new Router({
     {path:'/search',component: searchComponent},
     {path:'/home/newList',component: newListComponent},
     {path:'/home/newList/newInfo/:id',component: newInfoComponent},
-    {path:'/home/newList/photoshare',component: photoShareComponent}
+    {path:'/home/newList/photoshare',component: photoShareComponent},
+    {path:'/home/newList/photoshare/photoinfo/:id',component: photoInfoComponent}
   ],
   linkActiveClass: 'mui-active'
 })
