@@ -7,9 +7,9 @@
 						<div class="mui-media-body">
 							<h4 class="mui-ellipsis">{{item.title}}</h4>
 							<p>
-                                <span class="mui-pull-left">发表时间:{{item.add_time | dateFormat}}</span>
-                                <span class="mui-pull-right">点击:{{item.click}}次</span>
-                            </p>
+                  <span class="mui-pull-left">发表时间:{{item.add_time | dateFormat}}</span>
+                  <span class="mui-pull-right">点击:{{item.click}}次</span>
+              </p>
 						</div>
 					</router-link>
 				</li>
