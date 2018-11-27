@@ -109,7 +109,7 @@ export default {
     // 4. 经过分析，得出解题思路： 先得到 徽标的 横纵 坐标，再得到 小球的 横纵坐标，然后 让 y 值 求差， x 值也求 差，得到 的结果，就是横纵坐标要位移的距离
     // 5. 如何 获取 徽标和小球的 位置？？？   domObject.getBoundingClientRect()
     beforeEnter(el) {
-      el.style.opacity = 1;
+      // el.style.opacity = 1;
       el.style.transform = "translate(0, 0)";
     },
     enter(el, done) {
@@ -121,7 +121,11 @@ export default {
       const badgePosition = document
         .getElementById("badge")
         .getBoundingClientRect();
-      el.style.transform = "translate(140px, 140px)";
+
+      const clintX=badgePosition.left-ballPosition.left;
+      const clintY=badgePosition.top-ballPosition.top;
+      // el.style.transform = `translate(${clintX}px, ${clintY}px)`;
+      el.style.transform = 'translate(150px, 150px)';
       el.style.transition = "all .5s cubic-bezier(.4,-0.3,1,.68)";
       done();
     },
