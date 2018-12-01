@@ -1,6 +1,7 @@
 
 import Vue from 'vue'
 import App from './App'
+
 //设置为 false 以阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false
 
@@ -40,11 +41,27 @@ Vue.filter('dateFormat',function(data){
   return moment(data).format('YYYY-MM-DD HH:mm:ss')
 })
 
+//注册vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+var store = new Vuex.Store({
+  state:{ //this.$store.state.xxx
+
+  },
+  mutations:{//this.$store.commit('方法名','参数')
+
+  },
+  getters:{//this.$store.getters.xxx
+
+  }
+})
+
 
 
 
 new Vue({
   el: '#app',
   router,
-  render:c=>c(App)
+  render:c=>c(App),
+  store
 })
